@@ -1,11 +1,16 @@
+import random
+
 import PySimpleGUI as sg
 
 sg.theme('DarkAmber')  # Add a touch of color
 # All the stuff inside your window.
+operators = ["+", "-", "*", "/"]
 layout = [[sg.Text("adding values")],
-          [sg.Text('Enter first VALUE'), sg.InputText(key="a"), sg.Text('Enter second VALUE'), sg.InputText(key="b")],
+          [sg.Text('Enter first VALUE'), sg.InputText(key="a", enable_events=True), sg.Text('Enter second VALUE'),
+           sg.InputText(key="b")],
           [sg.Text('Result'), sg.Text("", key="result")],
-          [sg.Button('Ok'), sg.Button('Cancel')]]
+          [sg.Button('Ok'), sg.Button('Cancel'),
+           sg.Combo(values=["+", "-"], default_value="+", key="combo", enable_events=True)]]
 
 # Create the Window
 window = sg.Window('Window Title', layout)
@@ -16,7 +21,8 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
         break
     if event == "Ok":
-        window['result'].update(str(float(values["a"]) + float(values["b"])))
+        operator = operators[random.randint(0, 3)]
+        window['result'].update(eval(f"{values['a']} {operator} {values['b']}"))
         print('Output is:', float(values["a"]) + float(values["b"]))
 
 window.close()

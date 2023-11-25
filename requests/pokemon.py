@@ -9,7 +9,8 @@ def get_pokemon_image(pokemon_name: str):
 
     pokemon = resp.json()
 
-    sprite_url = pokemon['sprites'].get("other", pokemon['sprites']).get("official-artwork", pokemon['sprites'])['front_default']
+    sprite_url = pokemon['sprites'].get("other", pokemon['sprites']).get("official-artwork", pokemon['sprites'])[
+        'front_default']
     img = Image.open(requests.get(sprite_url, stream=True).raw)
     img.save("test.png")
     #
@@ -33,7 +34,3 @@ get_pokemon_image("charizard")
 # plt.imshow(np.asarray(img))
 # plt.show()
 # print(resp)
-
-resp = requests.get("")
-print(resp.content)
-print(resp.json())

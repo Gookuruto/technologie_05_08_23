@@ -17,6 +17,7 @@ from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import LearningRateScheduler
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.python.keras.layers import MaxPool2D
 
 class_names = ['Cat', 'Dog']
 
@@ -118,19 +119,19 @@ if INCLUDE_TEST:
 
 train_generator = train_gen.flow_from_directory(
     './tmp/cats-v-dogs/training',
-    target_size=(150, 150),
+    target_size=(224, 224),
     batch_size=64,
     class_mode='binary')
 validation_generator = validation_gen.flow_from_directory(
     './tmp/cats-v-dogs/validation',
-    target_size=(150, 150),
+    target_size=(224, 224),
     batch_size=64,
     class_mode='binary')
 
 if INCLUDE_TEST:
     test_generator = test_gen.flow_from_directory(
         './tmp/cats-v-dogs/validation',
-        target_size=(150, 150),
+        target_size=(224, 224),
         batch_size=64,
         class_mode='binary')
 
@@ -151,10 +152,17 @@ x = tf.keras.layers.GlobalAveragePooling2D()(x)
 x = Dense(1024, activation='relu')(x)
 x = tf.keras.layers.Dense(2, activation='softmax')(x)
 
-model = Model(inputs=inputs, outputs=x)
+model = Sequential([
+    Conv2D(filters=32, kernel_size=(3, 3), activation='relu', padding = 'same', input_shape=(224,224,3)),
+    MaxPool2D(pool_size=(2, 2), strides=2),
+    Conv2D(filters=64, kernel_size=(3, 3), activation='relu', padding = 'same'),
+    MaxPool2D(pool_size=(2, 2), strides=2),
+    Flatten(),
+    Dense(units=2, activation='softmax')
+])
 
 
-model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.01),
+model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001),
               loss='sparse_categorical_crossentropy',
               metrics = ['accuracy'])
 
@@ -188,15 +196,15 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
 #Train
 
 r = model.fit(
-        train_generator,
-        epochs=10,#Training longer could yield better results
-        validation_data=validation_generator)
+         train_generator,
+         epochs=10,#Training longer could yield better results
+         validation_data=validation_generator)
 
-tf.keras.saving.save_model(
-    model, './dog_v_cat_wight/model.keras', overwrite=True, save_format=None
-)
+# tf.keras.saving.save_model(
+#     model, './dog_v_cat_wight/model.keras', overwrite=True, save_format=None
+# )
 
-
+# model = tf.keras.saving.load_model("./dog_v_cat_wight/model.keras")
 #evalueate
 
 

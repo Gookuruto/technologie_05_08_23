@@ -8,6 +8,9 @@ app = Flask(__name__)
 def hello_world():
     return "<p><b>Hello</b>, World!</p>"
 
+@app.route("/text/<name>")
+def hello_maciej(name):
+    return f"<p><b>Hello</b>, {name}!</p>"
 
 @app.route("/chuck")
 def chuck_joke():

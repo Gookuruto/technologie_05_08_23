@@ -23,8 +23,8 @@
 # print(human)
 
 import random
-import arth_operations
-import pygame
+from artmetyka import arth_operations
+
 if __name__ == "__main__":
     print(random.__file__)
     print(random.__name__)

@@ -10,7 +10,7 @@ lbl.grid(column=0, row=0)
 counter = 0
 txt = tkinter.Entry(window,width=10)
 txt.grid(column=1,row=0)
-url = "https://www.google.com/"
+url = "https://www.python.org/"
 webbrowser.register('chrome',
                     None,
                     webbrowser.BackgroundBrowser(r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"))
