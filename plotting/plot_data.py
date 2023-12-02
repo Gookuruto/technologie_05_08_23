@@ -12,7 +12,10 @@ def age_plot():
     print(ages)
     print(names)
 
-    plt.bar(names, ages, color='g', width=0.72, label="Age")
+    mean_age = [sum(ages)/len(ages)]*len(names)
+
+    plt.bar(names, ages, color='g', label="Age")
+    plt.plot(names,mean_age,color='r',linestyle="dashed",label="mean age")
     plt.xlabel('Names')
     plt.ylabel('Ages')
     plt.title('Ages of different persons')
@@ -75,4 +78,6 @@ def pie():
 
 
 
-weather_plot(1990,"Warsaw")
+age_plot()
+#oscars()
+# weather_plot(1970,"Warsaw")

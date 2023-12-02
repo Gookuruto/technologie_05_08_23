@@ -48,7 +48,7 @@ while not game_over:
     dis.fill((255, 255, 255))
     pygame.draw.rect(dis, blue, [x, y, 10, 10])
     pygame.display.update()
-    clock.tick(30)
+    clock.tick(60)
 
 font_style = pygame.font.SysFont(None, 50)
 

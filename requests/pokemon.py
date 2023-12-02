@@ -11,11 +11,12 @@ def get_pokemon_image(pokemon_name: str):
 
     sprite_url = pokemon['sprites'].get("other", pokemon['sprites']).get("official-artwork", pokemon['sprites'])[
         'front_default']
+    stream = requests.get(sprite_url, stream=True).raw
     img = Image.open(requests.get(sprite_url, stream=True).raw)
     img.save("test.png")
     #
     # img = Image.open("test.png")
-    img = img.convert("RGB")
+    # img = img.convert("RGB")
     plt.imshow(np.asarray(img))
     plt.show()
 

@@ -2,7 +2,7 @@ import random
 
 import PySimpleGUI as sg
 
-sg.theme('DarkAmber')  # Add a touch of color
+sg.theme('HotDogStand')  # Add a touch of color
 # All the stuff inside your window.
 operators = ["+", "-", "*", "/"]
 layout = [[sg.Text("adding values")],
@@ -21,7 +21,7 @@ while True:
     if event == sg.WIN_CLOSED or event == 'Cancel':  # if user closes window or clicks cancel
         break
     if event == "Ok":
-        operator = operators[random.randint(0, 3)]
+        operator = values['combo']
         window['result'].update(eval(f"{values['a']} {operator} {values['b']}"))
         print('Output is:', float(values["a"]) + float(values["b"]))
 
