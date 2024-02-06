@@ -1,7 +1,7 @@
 # from arth_operations import *
 #
-# import test.add as ta
-# import test.sub as ts
+# import mp_summmingssssss.add as ta
+# import mp_summmingssssss.sub as ts
 #
 # print("[0] dodac")
 # print("[1] odjac")

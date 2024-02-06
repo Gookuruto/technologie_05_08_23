@@ -24,7 +24,7 @@ def age_plot():
 
 
 def weather_plot(year: int, city: str):
-    data = pd.read_csv("temperature.csv")
+    data = pd.read_csv("../../Python_projects/sda/technologie_zdpyt82/pandas_plus/temperature.csv")
     data2 = data.query(f'City == "{city}" & year == {year+10}').sort_values(by="month")
     data = data.query(f'City == "{city}" & year == {year}').sort_values(by="month")
 
@@ -78,6 +78,7 @@ def pie():
 
 
 
-age_plot()
+#age_plot()
 #oscars()
-# weather_plot(1970,"Warsaw")
+weather_plot(1990,"Warsaw")
+#pie()

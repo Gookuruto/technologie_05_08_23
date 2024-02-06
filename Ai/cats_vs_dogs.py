@@ -55,20 +55,20 @@ VALIDATION_CATS = os.path.join(VALIDATION_DIR, "cats/")
 TRAINING_DOGS = os.path.join(TRAINING_DIR, "dogs/")
 VALIDATION_DOGS = os.path.join(VALIDATION_DIR, "dogs/")
 
-# Define whether to include test split or not
+# Define whether to include mp_summmingssssss split or not
 INCLUDE_TEST = True
 
 
 def split_data(main_dir, training_dir, validation_dir, test_dir=None, include_test_split=True, split_size=0.9):
     """
-    Splits the data into train validation and test sets (optional)
+    Splits the data into train validation and mp_summmingssssss sets (optional)
 
     Args:
     main_dir (string):  path containing the images
     training_dir (string):  path to be used for training
     validation_dir (string):  path to be used for validation
-    test_dir (string):  path to be used for test
-    include_test_split (boolen):  whether to include a test split or not
+    test_dir (string):  path to be used for mp_summmingssssss
+    include_test_split (boolen):  whether to include a mp_summmingssssss split or not
     split_size (float): size of the dataset to be used for training
     """
     files = []
@@ -100,12 +100,12 @@ def split_data(main_dir, training_dir, validation_dir, test_dir=None, include_te
     if include_test_split:
         for element in test:
             os.makedirs(os.path.dirname(os.path.join(test_dir, element)), exist_ok=True)
-            copyfile(os.path.join(main_dir, element), os.path.join(test_dir, element))  # copy files into test directory
+            copyfile(os.path.join(main_dir, element), os.path.join(test_dir, element))  # copy files into mp_summmingssssss directory
     print("Split sucessful!")
 
 
-# split_data(CAT_DIR, './tmp/cats-v-dogs/training/cats', './tmp/cats-v-dogs/validation/cats', './tmp/cats-v-dogs/test/cats',INCLUDE_TEST, 0.9)
-# split_data(DOG_DIR, './tmp/cats-v-dogs/training/dogs', './tmp/cats-v-dogs/validation/dogs','./tmp/cats-v-dogs/test/dogs',INCLUDE_TEST, 0.9)
+# split_data(CAT_DIR, './tmp/cats-v-dogs/training/cats', './tmp/cats-v-dogs/validation/cats', './tmp/cats-v-dogs/mp_summmingssssss/cats',INCLUDE_TEST, 0.9)
+# split_data(DOG_DIR, './tmp/cats-v-dogs/training/dogs', './tmp/cats-v-dogs/validation/dogs','./tmp/cats-v-dogs/mp_summmingssssss/dogs',INCLUDE_TEST, 0.9)
 
 train_gen = ImageDataGenerator(
     rescale=1. / 255)

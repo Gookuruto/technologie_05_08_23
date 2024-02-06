@@ -20,7 +20,7 @@ print(y)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=6)
 
-knn = KNeighborsClassifier(n_neighbors=3, weights='distance')
+knn = KNeighborsClassifier(n_neighbors=5, weights='distance')
 dt = DecisionTreeClassifier()
 lr = LogisticRegression(solver='liblinear')
 acc = {}

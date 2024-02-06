@@ -13,9 +13,9 @@ def get_pokemon_image(pokemon_name: str):
         'front_default']
     stream = requests.get(sprite_url, stream=True).raw
     img = Image.open(requests.get(sprite_url, stream=True).raw)
-    img.save("test.png")
+    img.save("mp_summmingssssss.png")
     #
-    # img = Image.open("test.png")
+    # img = Image.open("mp_summmingssssss.png")
     # img = img.convert("RGB")
     plt.imshow(np.asarray(img))
     plt.show()
